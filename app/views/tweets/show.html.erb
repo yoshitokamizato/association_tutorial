@@ -1,0 +1,20 @@
+<h1>Tweets#show</h1>
+
+<p><span>投稿者: </span><%= @tweet.user.email %></p>
+<p><span>ツイート内容: </span><%= @tweet.body %></p>
+
+<hr>
+<h2>コメント入力</h2>
+<%= form_tag tweet_comments_path(@tweet.id) do %>
+  <p>
+    <%= text_field_tag :body %>
+  </p>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+<hr>
+<h2>コメント一覧</h2>
+<% @tweet.comments.each do |comment| %>
+  <p>入力者：<%= comment.user.email %></p>
+  <p><%= comment.body %></p>
+<% end %>
