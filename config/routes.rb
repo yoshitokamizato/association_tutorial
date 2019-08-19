@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   get 'comments/create'
   get 'comments/destroy'
   get 'favorites/create'
@@ -16,5 +18,11 @@ Rails.application.routes.draw do
 
   resources :tweets do
     resource :comments, only: [:create, :destroy]
+  end
+
+  resources :users do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member # 追加
+    get :followers, on: :member # 追加
   end
 end

@@ -5,9 +5,9 @@
 
 <hr>
 <h2>コメント入力</h2>
-<%= form_tag tweet_comments_path(@tweet.id) do %>
+<%= form_for([@tweet, @comment]) do |f| %>
   <p>
-    <%= text_field_tag :body %>
+    <%= f.text_field :body %>
   </p>
   <%= submit_tag("Submit") %>
 <% end %>
